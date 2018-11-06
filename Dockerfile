@@ -13,4 +13,6 @@ RUN ./configure --prefix=/usr/local --with-libevent=libevent-prefix
 RUN make
 RUN make install
 
-ENTRYPOINT ["/usr/local/bin/pgbouncer"]
+# pgbouncer can't run as root, so let's drop to 'nobody'
+RUN mkdir -m777 -p /var/run/pgbouncer/
+ENTRYPOINT ["/usr/local/bin/pgbouncer", "-u", "nobody"]
