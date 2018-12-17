@@ -17,6 +17,6 @@ RUN make install
 RUN mkdir -m777 -p /var/run/pgbouncer/
 
 # Healthcheck
-HEALTHCHECK --interval=10s --timeout=3s CMD nc -z localhost 6543
+HEALTHCHECK --interval=10s --timeout=3s CMD stat /tmp/.s.PGSQL.*
 
 ENTRYPOINT ["/usr/local/bin/pgbouncer", "-u", "nobody"]
