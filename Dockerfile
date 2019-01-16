@@ -13,10 +13,10 @@ RUN make install
 
 FROM alpine
 RUN apk --no-cache add libevent openssl c-ares
-COPY --from=builder /pgbouncer /usr/lib/pgbouncer
+COPY --from=builder /pgbouncer /pgbouncer
 
 # Healthcheck
 HEALTHCHECK --interval=10s --timeout=3s CMD stat /tmp/.s.PGSQL.*
 
 # pgbouncer can't run as root, so let's drop to 'nobody' by default :)
-ENTRYPOINT ["/usr/local/bin/pgbouncer", "-u", "nobody"]
+ENTRYPOINT ["/pgbouncer/bin/pgbouncer", "-u", "nobody"]
