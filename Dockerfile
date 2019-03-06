@@ -1,18 +1,22 @@
 FROM alpine AS builder
 
-LABEL maintainer="Gerben Geijteman <gerben@hyperized.net>"
-LABEL description="A simple pg_bouncer docker instance"
-
 RUN apk --no-cache add make pkgconfig autoconf automake libtool py-docutils git gcc g++ libevent-dev openssl-dev c-ares-dev ca-certificates
 RUN git clone --recurse-submodules -j8 https://github.com/pgbouncer/pgbouncer.git
+
 WORKDIR pgbouncer
+
 RUN ./autogen.sh
 RUN ./configure --prefix=/pgbouncer --with-libevent=libevent-prefix
 RUN make
 RUN make install
 
 FROM alpine
+
+LABEL maintainer="Gerben Geijteman <gerben@hyperized.net>"
+LABEL description="A simple pg_bouncer docker instance"
+
 RUN apk --no-cache add libevent openssl c-ares
+
 COPY --from=builder /pgbouncer /pgbouncer
 
 # Healthcheck

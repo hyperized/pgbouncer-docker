@@ -13,6 +13,16 @@ A small Alpine based pgbouncer Docker image
 
 ```docker run -v $(pwd):/m -p 6543:6543 hyperized/pgbouncer /m/example.ini```
 
+## To run container with TLS to PostgreSQL server
+
+Commonly used with PHP as local connection pool to eliminate TLS overhead.
+
+Expects `ca.crt`, `key.pem` and `cert.pem` to be present in current folder.
+
+See `tls.ini` for details
+
+```docker run -v $(pwd):/m -p -p 6543:6543 hyperized/pgbouncer /m/tls.ini```
+
 ## To show stats
 
 ```
