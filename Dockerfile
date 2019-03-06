@@ -1,7 +1,9 @@
-FROM alpine AS builder
+FROM alpine:3.8 AS builder
+
+ARG build_tag=pgbouncer_1_9_0
 
 RUN apk --no-cache add make pkgconfig autoconf automake libtool py-docutils git gcc g++ libevent-dev openssl-dev c-ares-dev ca-certificates
-RUN git clone --recurse-submodules -j8 https://github.com/pgbouncer/pgbouncer.git
+RUN git clone --branch ${build_tag} --recurse-submodules -j8 https://github.com/pgbouncer/pgbouncer.git
 
 WORKDIR pgbouncer
 
@@ -10,7 +12,7 @@ RUN ./configure --prefix=/pgbouncer --with-libevent=libevent-prefix
 RUN make
 RUN make install
 
-FROM alpine
+FROM alpine:3.8
 
 LABEL maintainer="Gerben Geijteman <gerben@hyperized.net>"
 LABEL description="A simple pg_bouncer docker instance"
