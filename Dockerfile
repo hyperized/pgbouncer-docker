@@ -2,6 +2,9 @@ FROM alpine:3.8 AS builder
 
 ARG build_tag=pgbouncer_1_10_0
 
+RUN wget https://github.com/jgm/pandoc/releases/download/2.7.3/pandoc-2.7.3-linux.tar.gz
+RUN tar xvzf pandoc-2.7.3-linux.tar.gz --strip-components 1 -C /usr/local
+
 RUN apk --no-cache add make pkgconfig autoconf automake libtool py-docutils git gcc g++ libevent-dev openssl-dev c-ares-dev ca-certificates
 RUN git clone --branch ${build_tag} --recurse-submodules -j8 https://github.com/pgbouncer/pgbouncer.git
 
