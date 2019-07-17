@@ -1,6 +1,6 @@
 FROM alpine:3.8 AS builder
 
-ARG build_tag=pgbouncer_1_9_0
+ARG build_tag=pgbouncer_1_10_0
 
 RUN apk --no-cache add make pkgconfig autoconf automake libtool py-docutils git gcc g++ libevent-dev openssl-dev c-ares-dev ca-certificates
 RUN git clone --branch ${build_tag} --recurse-submodules -j8 https://github.com/pgbouncer/pgbouncer.git
