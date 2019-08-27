@@ -1,6 +1,6 @@
 FROM alpine:3.8 AS builder
 
-ARG build_tag=pgbouncer_1_10_0
+ARG build_tag=pgbouncer_1_11_0
 
 RUN wget https://github.com/jgm/pandoc/releases/download/2.7.3/pandoc-2.7.3-linux.tar.gz
 RUN tar xvzf pandoc-2.7.3-linux.tar.gz --strip-components 1 -C /usr/local
