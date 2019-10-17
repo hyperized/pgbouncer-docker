@@ -1,6 +1,6 @@
-FROM alpine:3.8 AS builder
+FROM alpine:3.10.2 AS builder
 
-ARG build_tag=pgbouncer_1_11_0
+ARG build_tag=pgbouncer_1_12_0
 
 RUN wget https://github.com/jgm/pandoc/releases/download/2.7.3/pandoc-2.7.3-linux.tar.gz
 RUN tar xvzf pandoc-2.7.3-linux.tar.gz --strip-components 1 -C /usr/local
@@ -11,11 +11,11 @@ RUN git clone --branch ${build_tag} --recurse-submodules -j8 https://github.com/
 WORKDIR pgbouncer
 
 RUN ./autogen.sh
-RUN ./configure --prefix=/pgbouncer --with-libevent=libevent-prefix
+RUN ./configure --prefix=/pgbouncer
 RUN make
 RUN make install
 
-FROM alpine:3.8
+FROM alpine:3.10.2
 
 LABEL maintainer="Gerben Geijteman <gerben@hyperized.net>"
 LABEL description="A simple pg_bouncer docker instance"
