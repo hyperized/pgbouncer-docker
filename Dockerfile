@@ -1,3 +1,6 @@
+FROM hyperized/scratch:latest as trigger
+# Used to trigger Docker hubs auto build, which it wont do on the official images
+
 FROM alpine:3.10.2 AS builder
 
 ARG build_tag=pgbouncer_1_12_0
