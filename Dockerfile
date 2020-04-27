@@ -1,12 +1,13 @@
 FROM hyperized/scratch:latest as trigger
 # Used to trigger Docker hubs auto build, which it wont do on the official images
 
-FROM alpine:3.10.2 AS builder
+FROM alpine:3.11.6 AS builder
 
-ARG build_tag=pgbouncer_1_12_0
+ARG build_tag=pgbouncer_1_13_0
+ARG pandoc_tag=2.9.2.1
 
-RUN wget https://github.com/jgm/pandoc/releases/download/2.7.3/pandoc-2.7.3-linux.tar.gz
-RUN tar xvzf pandoc-2.7.3-linux.tar.gz --strip-components 1 -C /usr/local
+RUN wget https://github.com/jgm/pandoc/releases/download/${pandoc_tag}/pandoc-${pandoc_tag}-linux-amd64.tar.gz
+RUN tar xvzf pandoc-${pandoc_tag}-linux-amd64.tar.gz --strip-components 1 -C /usr/local
 
 RUN apk --no-cache add make pkgconfig autoconf automake libtool py-docutils git gcc g++ libevent-dev openssl-dev c-ares-dev ca-certificates
 RUN git clone --branch ${build_tag} --recurse-submodules -j8 https://github.com/pgbouncer/pgbouncer.git
@@ -18,7 +19,7 @@ RUN ./configure --prefix=/pgbouncer
 RUN make
 RUN make install
 
-FROM alpine:3.10.2
+FROM alpine:3.11.6
 
 LABEL maintainer="Gerben Geijteman <gerben@hyperized.net>"
 LABEL description="A simple pg_bouncer docker instance"
