@@ -1,7 +1,7 @@
 FROM hyperized/scratch:latest as trigger
 # Used to trigger Docker hubs auto build, which it wont do on the official images
 
-FROM alpine:3.11.6 AS builder
+FROM alpine:3.12.0 AS builder
 
 ARG build_tag=pgbouncer_1_13_0
 ARG pandoc_tag=2.9.2.1
@@ -19,7 +19,7 @@ RUN ./configure --prefix=/pgbouncer
 RUN make
 RUN make install
 
-FROM alpine:3.11.6
+FROM alpine:3.12.0
 
 LABEL maintainer="Gerben Geijteman <gerben@hyperized.net>"
 LABEL description="A simple pg_bouncer docker instance"
