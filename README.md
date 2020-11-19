@@ -7,7 +7,7 @@ A small Alpine based pgbouncer Docker image
 
 ## To build container
 
-```docker build -t hyperized/pgbouncer Dockerfile```
+```docker build -t hyperized/pgbouncer .```
 
 ## To run container 
 
@@ -26,11 +26,10 @@ See `tls.ini` for details
 Expect output to be like:
 
 ```shell script
-2020-04-27 12:07:12.741 UTC [1] LOG kernel file descriptor limit: 1048576 (hard: 1048576); max_client_conn: 100, max expected fd use: 112
-2020-04-27 12:07:12.741 UTC [1] LOG listening on 0.0.0.0:6543
-2020-04-27 12:07:12.741 UTC [1] LOG listening on unix:/tmp/.s.PGSQL.6543
-2020-04-27 12:07:12.741 UTC [1] LOG process up: PgBouncer 1.13.0, libevent 2.1.10-stable (epoll), adns: c-ares 1.15.0, tls: OpenSSL 1.1.1c  28 May 2019
-2020-04-27 12:08:12.675 UTC [1] LOG stats: 0 xacts/s, 0 queries/s, in 0 B/s, out 0 B/s, xact 0 us, query 0 us, wait 0 us
+2020-11-19 13:56:01.894 UTC [1] LOG kernel file descriptor limit: 1048576 (hard: 1048576); max_client_conn: 100, max expected fd use: 112
+2020-11-19 13:56:01.895 UTC [1] LOG listening on 0.0.0.0:6543
+2020-11-19 13:56:01.895 UTC [1] LOG listening on unix:/tmp/.s.PGSQL.6543
+2020-11-19 13:56:01.896 UTC [1] LOG process up: PgBouncer 1.15.0, libevent 2.1.11-stable (epoll), adns: c-ares 1.16.1, tls: OpenSSL 1.1.1g  21 Apr 2020
 ```
 
 To log in with this example:
