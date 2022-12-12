@@ -26,10 +26,10 @@ See `tls.ini` for details
 Expect output to be like:
 
 ```shell script
-2022-03-23 12:56:41.219 UTC [1] LOG kernel file descriptor limit: 1048576 (hard: 1048576); max_client_conn: 100, max expected fd use: 152
-2022-03-23 12:56:41.220 UTC [1] LOG listening on 0.0.0.0:6543
-2022-03-23 12:56:41.220 UTC [1] LOG listening on unix:/tmp/.s.PGSQL.6543
-2022-03-23 12:56:41.220 UTC [1] LOG process up: PgBouncer 1.17.0, libevent 2.1.12-stable (epoll), adns: c-ares 1.18.1, tls: OpenSSL 1.1.1n  15 Mar 2022
+2022-12-12 15:34:04.914 UTC [1] LOG kernel file descriptor limit: 1048576 (hard: 1048576); max_client_conn: 100, max expected fd use: 152
+2022-12-12 15:34:04.915 UTC [1] LOG listening on 0.0.0.0:6543
+2022-12-12 15:34:04.915 UTC [1] LOG listening on unix:/tmp/.s.PGSQL.6543
+2022-12-12 15:34:04.916 UTC [1] LOG process up: PgBouncer 1.18.0, libevent 2.1.12-stable (epoll), adns: c-ares 1.18.1, tls: OpenSSL 3.0.7 1 Nov 2022
 ```
 
 To log in with this example:
