@@ -3,7 +3,7 @@ FROM hyperized/scratch:latest as trigger
 
 FROM alpine:3.19 AS builder
 
-ARG build_tag=pgbouncer_1_22_0
+ARG build_tag=pgbouncer_1_22_1
 ARG pandoc_tag=3.1.11
 
 RUN wget https://github.com/jgm/pandoc/releases/download/${pandoc_tag}/pandoc-${pandoc_tag}-linux-amd64.tar.gz
