@@ -26,10 +26,10 @@ See `tls.ini` for details
 Expect output to be like:
 
 ```shell script
-2024-01-31 13:17:14.442 UTC [1] LOG kernel file descriptor limit: 1048576 (hard: 1048576); max_client_conn: 100, max expected fd use: 152
-2024-01-31 13:17:14.442 UTC [1] LOG listening on 0.0.0.0:6543
-2024-01-31 13:17:14.443 UTC [1] LOG listening on unix:/tmp/.s.PGSQL.6543
-2024-01-31 13:17:14.443 UTC [1] LOG process up: PgBouncer 1.22.0, libevent 2.1.12-stable (epoll), adns: c-ares 1.24.0, tls: OpenSSL 3.1.4 24 Oct 2023
+2024-07-03 12:44:17.990 UTC [1] LOG kernel file descriptor limit: 1048576 (hard: 1048576); max_client_conn: 100, max expected fd use: 152
+2024-07-03 12:44:17.991 UTC [1] LOG listening on 0.0.0.0:6543
+2024-07-03 12:44:17.991 UTC [1] LOG listening on unix:/tmp/.s.PGSQL.6543
+2024-07-03 12:44:17.991 UTC [1] LOG process up: PgBouncer 1.22.0, libevent 2.1.12-stable (epoll), adns: c-ares 1.24.0, tls: OpenSSL 3.1.4 24 Oct 2023
 ```
 
 To log in with this example:
@@ -45,7 +45,7 @@ with the password `mypass` (as described in `password.txt`)
 ```
 psql -h 127.0.0.1 -p 6543 pgbouncer
 
-psql (16.1, server 1.22.0/bouncer)
+psql (16.3, server 1.23.0/bouncer)
 Type "help" for help.
 
 pgbouncer=# SHOW STATS;
