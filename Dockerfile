@@ -3,8 +3,8 @@ FROM hyperized/scratch:latest AS trigger
 
 FROM alpine:3.21 AS builder
 
-ARG build_tag=pgbouncer_1_24_0
-ARG pandoc_tag=3.6.1
+ARG build_tag=pgbouncer_1_24_1
+ARG pandoc_tag=3.6.4
 
 RUN wget https://github.com/jgm/pandoc/releases/download/${pandoc_tag}/pandoc-${pandoc_tag}-linux-amd64.tar.gz
 RUN tar xvzf pandoc-${pandoc_tag}-linux-amd64.tar.gz --strip-components 1 -C /usr/local
